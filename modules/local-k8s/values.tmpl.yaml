@@ -1,0 +1,20 @@
+replicaCount: 1
+
+image:
+  repository: "${image_repo}"
+  tag: "${image_tag}"
+  pullPolicy: IfNotPresent
+
+service:
+  type: ClusterIP
+  port: 8080
+
+ingress:
+  enabled: true
+  className: "${ingress_class}"
+  hosts:
+    - host: "${ingress_host}"
+      paths:
+        - path: /
+          pathType: Prefix
+  tls: []

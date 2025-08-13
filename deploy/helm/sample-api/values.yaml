@@ -1,0 +1,20 @@
+replicaCount: 1
+
+image:
+  repository: <your_ecr_repo_url>/sample-api
+  tag: latest
+  pullPolicy: IfNotPresent
+
+service:
+  type: ClusterIP
+  port: 8080
+
+ingress:
+  enabled: true
+  className: nginx
+  hosts:
+    - host: sample.local
+      paths:
+        - path: /
+          pathType: Prefix
+  tls: []
